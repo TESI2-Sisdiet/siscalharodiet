@@ -6,18 +6,18 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import entity.Alimentos;
-import entity.GerenciaDieta;
+import entity.Dieta;
 import entity.ItemDieta;
 
-public class GerenciaDietaDAO extends MasterDAO {
+public class DietaDAO extends MasterDAO {
 	
 	//Inserir
 	public void additemDieta(ItemDieta itemdieta){
 		inserirObjeto(itemdieta);
 	}
 	//atualizar
-	public void atualizarGerenciaDieta(GerenciaDieta gerenciaDieta){
-		atualizarObjeto(gerenciaDieta);
+	public void atualizarDieta(Dieta Dieta){
+		atualizarObjeto(Dieta);
 	}
 	
 //listar todos os Alimentos

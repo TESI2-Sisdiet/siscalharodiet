@@ -16,22 +16,22 @@ import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.DualListModel;
 
 import DAO.AlimentosDAO;
-import DAO.GerenciaDietaDAO;
+import DAO.DietaDAO;
 import DAO.ItemDietaDAO;
 import entity.Alimentos;
-import entity.GerenciaDieta;
+import entity.Dieta;
 import entity.ItemDieta;
 
 
-@ManagedBean(name="gereciadietaBean")
+@ManagedBean(name="dietaBean")
 @SessionScoped
-public class GerenciaDietaBean {
-	private GerenciaDieta gerenciadieta;
-	private GerenciaDietaDAO gerenciadietaDAO = new GerenciaDietaDAO();
+public class DietaBean {
+	private Dieta dieta;
+	private DietaDAO dietaDAO = new DietaDAO();
 	private ItemDieta item = new ItemDieta(); 
 	private ItemDietaDAO itemdietaDAO = new ItemDietaDAO();
 	public void gerenciarDieta(){
-		gerenciadieta = new GerenciaDieta();
+		dieta = new Dieta();
 		
 	}
 	 
@@ -41,36 +41,36 @@ public class GerenciaDietaBean {
 		
 	}
 	
-	public GerenciaDieta getGerenciaDieta(){
-		if(gerenciadieta==null)
-			gerenciadieta = new GerenciaDieta();
-		return gerenciadieta;
+	public Dieta getGerenciaDieta(){
+		if(dieta==null)
+			dieta = new Dieta();
+		return dieta;
 	}
 	
-	public void setGerenciaDieta(GerenciaDieta gerenciadieta){
-		this.gerenciadieta = gerenciadieta;
+	public void setDieta(Dieta dieta){
+		this.dieta = dieta;
 		
 	}
 	
-	private List<GerenciaDieta> listaGerenciaDieta = null;
+	private List<Dieta> listaDieta = null;
 	
-	private List<GerenciaDieta> filtroLista = null;
-
-	public List<GerenciaDieta> getListaGerenciaDieta() {
-		if(listaGerenciaDieta == null)
-			listaGerenciaDieta = gerenciadietaDAO.listarAlimentos(); 
-		return listaGerenciaDieta;
+	private List<Dieta> filtroLista = null;
+/*
+	public List<Dieta> getListaDieta() {
+		if(listaDieta == null)
+			listaDieta = dietaDAO.listarAlimentos(); 
+		return listaDieta;
+	}
+*/
+	public void setListaDieta(List<Dieta> listaDieta) {
+		this.listaDieta = listaDieta;
 	}
 
-	public void setListaGerenciaDieta(List<GerenciaDieta> listaGerenciaDieta) {
-		this.listaGerenciaDieta = listaGerenciaDieta;
-	}
-
-	public List<GerenciaDieta> getFiltroLista() {
+	public List<Dieta> getFiltroLista() {
 		return filtroLista;
 	}
 
-	public void setFiltroLista(List<GerenciaDieta> filtroLista) {
+	public void setFiltroLista(List<Dieta> filtroLista) {
 		this.filtroLista = filtroLista;
 	}
 	

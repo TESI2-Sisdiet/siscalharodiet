@@ -16,47 +16,49 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-public class GerenciaDieta implements Serializable{
+public class Dieta implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int idgerenciaDieta;
+	private int idDieta;
 	
 	@Column(name="data")
 	@Temporal(TemporalType.DATE)
 	private Date dataItem;
 	
-	@OneToMany(mappedBy="gerenciadieta")
-	private List<Alimentos> alimentos;
+	/*@OneToMany(mappedBy="ItemDieta")
+	@Column
+	private List<ItemDieta> itemdieta;
+
+	public List<ItemDieta> getItemdieta() {
+		return itemdieta;
+	}
+
+	public void setItemdieta(List<ItemDieta> itemdieta) {
+		this.itemdieta = itemdieta;
+	}
+*/
 	
-	@OneToMany(mappedBy="gerenciadieta")
-	private List<Usuario> usuarios;
 	@ManyToOne
 	@JoinColumn(referencedColumnName="idUser",name="fkidUser")
 	private Usuario idusuario;
 
-	public List<Alimentos> getAlimentos() {
-		return alimentos;
+	
+
+	public Usuario getIdusuario() {
+		return idusuario;
 	}
 
-	public void setAlimentos(List<Alimentos> alimentos) {
-		this.alimentos = alimentos;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setIdusuario(Usuario idusuario) {
+		this.idusuario = idusuario;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idgerenciaDieta;
+		result = prime * result + idDieta;
 		return result;
 	}
 
@@ -68,9 +70,11 @@ public class GerenciaDieta implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GerenciaDieta other = (GerenciaDieta) obj;
-		if (idgerenciaDieta != other.idgerenciaDieta)
+		Dieta other = (Dieta) obj;
+		if (idDieta != other.idDieta)
 			return false;
 		return true;
-	} 
+	}
+
+
 }

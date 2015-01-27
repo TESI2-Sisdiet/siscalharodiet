@@ -3,7 +3,6 @@ package entity ;
 
 import java.io.Serializable;
 import java.sql.Array;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,12 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 
 @Entity
 public class ItemDieta implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idItemDieta;
@@ -26,10 +26,29 @@ public class ItemDieta implements Serializable{
 	@ManyToOne
 	@JoinColumn(referencedColumnName="idAlimento",name="fkAlimento")
 	private Alimentos alimentos;
+	
+	public Dieta getDieta() {
+		return dieta;
+	}
+	public void setDieta(Dieta dieta) {
+		this.dieta = dieta;
+	}
 	@ManyToOne
-	@JoinColumn(referencedColumnName="idgerenciaDieta",name="fkgerenciaDieta")
-	private GerenciaDieta gerenciadieta;
-	@Column(name="data")
-	@Temporal(TemporalType.DATE)
-	private Date dataItem;
+	@JoinColumn(referencedColumnName="idDieta",name="fkDieta")
+	private Dieta dieta;
+	
+	public Integer getIdItemDieta() {
+		return idItemDieta;
+	}
+	public void setIdItemDieta(Integer idItemDieta) {
+		this.idItemDieta = idItemDieta;
+	}
+	public Alimentos getAlimentos() {
+		return alimentos;
+	}
+	public void setAlimentos(Alimentos alimentos) {
+		this.alimentos = alimentos;
+	}
+
+	
 }
